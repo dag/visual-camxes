@@ -4,6 +4,7 @@ import camxes
 
 app = Flask(__name__)
 genshi = Genshi(app)
+genshi.extensions['html'] = 'html5'
 
 
 @app.route('/')

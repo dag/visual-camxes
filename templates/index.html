@@ -27,7 +27,11 @@
         <input
           id="text"
           name="text"
-          value="${text}"
+          value="${request.args.get('text')}"
+          placeholder="coi pilno mi'e camxes"
+          autofocus="autofocus"
+          autocomplete="off"
+          required="required"
           size="80"
         />
       </p>
