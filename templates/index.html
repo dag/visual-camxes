@@ -1,0 +1,25 @@
+<html xmlns:py="http://genshi.edgewall.org/">
+  <head>
+    <link rel="stylesheet" href="${url_for('static', filename='screen.css')}"/>
+  </head>
+  <body py:with="color = cycler(*'first second third fourth fifth'.split())">
+
+    <form action="${url_for('index')}" method="GET">
+      <p><input name="text" value="${request.args.get('text')}" size="80"/></p>
+    </form>
+
+    <div py:def="box(node)" class="box ${color.next()}">
+      <py:for each="child in node">
+        <py:choose test="isinstance(child, basestring)">
+          <p py:when="True"><strong>${child}</strong></p>
+          <py:when test="False">
+            ${box(child)}
+          </py:when>
+        </py:choose>
+      </py:for>
+      <p>${node.name}</p>
+    </div>
+
+    ${box(ast)}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+* { font-family: sans-serif; }
+
+.box {
+  text-align: center; float: left;
+  margin: 0 .5em 1em .5em; padding: 0 .5em 1em .5em;
+  min-width: 3em;
+}
+
+body > .box { margin: 0; }
+.box p { margin: .5em .5em 0 .5em; padding: 0; }
+
+.first { background: #ede5dc; }
+.second { background: #f6eaeb; }
+.third { background: #f9dbdc; }
+.fourth { background: #fff6f2; }
+.fifth { background: #f4e0d4; }
