@@ -1,5 +1,8 @@
 * { font-family: sans-serif; }
 
+form { position: fixed; }
+#boxes { padding-top: 4em; }
+
 .box {
   text-align: center;
   display: table-cell; 
