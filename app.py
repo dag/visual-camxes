@@ -10,7 +10,10 @@ genshi.extensions['html'] = 'html5'
 @app.route('/')
 def index():
     text = request.args.get('text', "coi pilno mi'e camxes")
-    ast = camxes.parse(text)
+    try:
+        ast = camxes.parse(text)
+    except:
+        return redirect(url_for('index'))
     if request.is_xhr:
         return render_response('box.html', dict(ast=ast, text=text))
     return render_response('index.html', dict(ast=ast, text=text))
