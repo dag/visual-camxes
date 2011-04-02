@@ -1,6 +1,7 @@
 * { font-family: sans-serif; }
 
 form { position: fixed; }
+.ungrammatical { background: #fcc; }
 #boxes { padding-top: 4em; }
 
 .box {

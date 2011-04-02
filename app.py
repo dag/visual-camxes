@@ -12,11 +12,14 @@ def index():
     text = request.args.get('text', "coi pilno mi'e camxes")
     try:
         ast = camxes.parse(text)
+        grammatical = camxes.isgrammatical(text)
     except:
         return redirect(url_for('index'))
     if 'json' in request.args:
-        return jsonify(html=render_template('box.html', dict(ast=ast)))
-    return render_response('index.html', dict(ast=ast, text=text))
+        return jsonify(html=render_template('box.html', dict(ast=ast)),
+            grammatical=grammatical)
+    return render_response('index.html',
+        dict(ast=ast, text=text, grammatical=grammatical))
 
 
 if __name__ == '__main__':
