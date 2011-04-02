@@ -8,12 +8,11 @@ genshi = Genshi(app)
 
 @app.route('/')
 def index():
-    if 'text' not in request.args:
-        return redirect(url_for('index', text="coi pilno mi'e camxes"))
-    ast = camxes.parse(request.args['text'])
+    text = request.args.get('text', "coi pilno mi'e camxes")
+    ast = camxes.parse(text)
     if request.is_xhr:
-        return render_response('box.html', dict(ast=ast))
-    return render_response('index.html', dict(ast=ast))
+        return render_response('box.html', dict(ast=ast, text=text))
+    return render_response('index.html', dict(ast=ast, text=text))
 
 
 if __name__ == '__main__':
