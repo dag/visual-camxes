@@ -1,7 +1,8 @@
 <html
   xmlns:py="http://genshi.edgewall.org/"
   py:with="color = cycler(*'first second third fourth fifth'.split())"
-  py:strip="">
+  py:strip=""
+>
 
   <div py:def="box(node)" class="box ${color.next()}">
     <py:for each="child in node">
