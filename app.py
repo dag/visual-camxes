@@ -1,5 +1,5 @@
-from flask import Flask, request, redirect, url_for
-from flaskext.genshi import Genshi, render_response
+from flask import Flask, request, redirect, url_for, jsonify
+from flaskext.genshi import Genshi, render_response, render_template
 import camxes
 
 app = Flask(__name__)
@@ -14,8 +14,8 @@ def index():
         ast = camxes.parse(text)
     except:
         return redirect(url_for('index'))
-    if request.is_xhr:
-        return render_response('box.html', dict(ast=ast, text=text))
+    if 'json' in request.args:
+        return jsonify(html=render_template('box.html', dict(ast=ast)))
     return render_response('index.html', dict(ast=ast, text=text))
 
 

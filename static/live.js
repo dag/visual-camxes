@@ -1,7 +1,7 @@
 $(function() {
   $("#text").keyup(function() {
-    $.get("/", { text: $("#text").val() }, function(data) {
-      $("#boxes").html(data);
+    $.getJSON("/", { text: $("#text").val(), json: true }, function(json) {
+      $("#boxes").html(json.html);
     });
   });
 });
