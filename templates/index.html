@@ -1,25 +1,35 @@
-<html xmlns:py="http://genshi.edgewall.org/">
+<html
+  xmlns:py="http://genshi.edgewall.org/"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
   <head>
-    <link rel="stylesheet" href="${url_for('static', filename='screen.css')}"/>
+    <link
+      rel="stylesheet"
+      href="${url_for('static', filename='screen.css')}"
+    />
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
+    />
+    <script
+      type="text/javascript"
+      src="${url_for('static', filename='live.js')}"
+    />
   </head>
-  <body py:with="color = cycler(*'first second third fourth fifth'.split())">
+  <body>
 
     <form action="${url_for('index')}" method="GET">
-      <p><input name="text" value="${request.args.get('text')}" size="80"/></p>
+      <p>
+        <input
+          id="text"
+          name="text"
+          value="${request.args.get('text')}"
+          size="80"
+        />
+      </p>
     </form>
 
-    <div py:def="box(node)" class="box ${color.next()}">
-      <py:for each="child in node">
-        <py:choose test="isinstance(child, basestring)">
-          <p py:when="True"><strong>${child}</strong></p>
-          <py:when test="False">
-            ${box(child)}
-          </py:when>
-        </py:choose>
-      </py:for>
-      <p>${node.name}</p>
+    <div id="boxes">
+      <xi:include href="box.html"/>
     </div>
-
-    ${box(ast)}
   </body>
 </html>
