@@ -7,17 +7,16 @@
       rel="stylesheet"
       href="${url_for('static', filename='screen.css')}"
     />
+
     <script
       type="text/javascript"
       src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
     />
+
     <script
+      py:for="filename in ('hscroll.js', 'live.js')"
       type="text/javascript"
-      src="${url_for('static', filename='hscroll.js')}"
-    />
-    <script
-      type="text/javascript"
-      src="${url_for('static', filename='live.js')}"
+      src="${url_for('static', filename=filename)}"
     />
   </head>
   <body>
