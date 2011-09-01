@@ -1,6 +1,13 @@
-$(function() {
+(function($) {
+
+var ajaxRequest = null;
+
+$(document).ready(function() {
   $("#text").keyup(function() {
-    $.getJSON("", { text: $("#text").val(), json: true }, function(json) {
+
+    if (ajaxRequest) ajaxRequest.abort();
+
+    ajaxRequest = $.getJSON("", { text: $("#text").val(), json: true }, function(json) {
       $("#boxes").html(json.html);
       if (json.grammatical) {
         $("#text").removeClass("ungrammatical");
@@ -12,3 +19,5 @@ $(function() {
     });
   });
 });
+
+})(jQuery);
