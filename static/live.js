@@ -20,7 +20,9 @@ $(document).ready(function() {
           var link = $("<a/>")[0];
           link.href = window.location.href;
           link.search = "?text=" + escape(jboText);
-          history.pushState(null, null, link.href);
+
+          var title = jboText + " -- visual camxes";
+          history.replaceState(null, title, link.href);
         }
       } else {
         $("#text").addClass("ungrammatical");
